@@ -58,13 +58,19 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
     }
 
     body {
       background: var(--bg-base);
       line-height: 1.55;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
       color: var(--text-primary);
+      position: relative;
     }
 
     ::selection {
@@ -981,12 +987,88 @@
     }
 
     /* ==========================================================================
-       RESPONSIVE ADAPTATIONS
+       MOBILE DRAWER MENU
+       ========================================================================== */
+    .mobile-drawer {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 64px);
+      height: calc(100dvh - 64px);
+      background: rgba(10, 11, 13, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-hairline);
+      z-index: 89;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-drawer-inner {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .mobile-drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-drawer-links a {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+
+    .mobile-drawer-links a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-nav-cta {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS (MOBILE & TABLET)
        ========================================================================== */
     @media (max-width: 1080px) {
       .hero-split-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 36px;
       }
       .datasheet-body {
         grid-template-columns: 1fr;
@@ -994,39 +1076,191 @@
       }
       .skills-index-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
       .case-row {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
       }
       .case-action-col {
         text-align: left;
       }
       .contact-split-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
       }
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 0 18px;
+      }
+      .top-bar-inner {
+        padding: 0 18px;
+        height: 58px;
+      }
+      .mobile-drawer {
+        top: 58px;
+        height: calc(100vh - 58px);
+        height: calc(100dvh - 58px);
+      }
       .nav-items, .nav-cta-btn {
         display: none;
       }
       .mobile-menu-btn {
         display: flex;
       }
-      .form-row-2 {
-        grid-template-columns: 1fr;
+      .hero-editorial {
+        padding: 44px 0 36px;
+      }
+      .hero-lead-title {
+        font-size: clamp(2.3rem, 9.8vw, 3.8rem);
+        line-height: 1.05;
+        word-break: break-word;
+      }
+      .hero-statement {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .hero-direct-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
+      .hero-direct-actions .btn-solid-accent,
+      .hero-direct-actions .btn-outline {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+      .canvas-scroll-section {
+        height: 280vh;
+      }
+      .canvas-sticky-enclosure {
+        top: 58px;
+        height: calc(100vh - 58px);
+        height: calc(100dvh - 58px);
+      }
+      .viewport-header {
+        padding: 0 14px;
+        height: 36px;
+        font-size: 0.68rem;
       }
       .viewport-hud {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        bottom: 16px;
+        left: 14px;
+        right: 14px;
       }
       .viewport-scrubber {
         width: 100%;
+        max-width: 220px;
       }
-      .container {
-        padding: 0 20px;
+      .section-editorial {
+        padding: 64px 0;
+      }
+      .section-eyebrow-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+      .section-heading {
+        font-size: 1.85rem;
+      }
+      .datasheet-header {
+        padding: 18px 20px;
+        gap: 14px;
+      }
+      .datasheet-title {
+        font-size: 1.45rem;
+      }
+      .datasheet-link-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .datasheet-body {
+        padding: 22px 18px;
+        gap: 24px;
+      }
+      .skill-discipline-column {
+        padding: 24px 20px;
+      }
+      .case-row {
+        padding: 24px 20px;
+      }
+      .case-action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .contact-split-grid {
+        padding: 28px 20px;
+        gap: 36px;
+      }
+      .contact-intro-block h3 {
+        font-size: 1.65rem;
+      }
+      .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .submit-inquiry-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .footer-technical {
+        padding: 36px 0;
+      }
+      .footer-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .footer-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .footer-nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .status-indicator {
+        display: none;
+      }
+      .viewport-meta-group:first-child span:first-child {
+        display: none;
+      }
+      .dossier-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 16px;
+      }
+      .dossier-val {
+        word-break: break-word;
+      }
+      .spec-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+      .spec-table td.spec-key {
+        width: 100%;
+        margin-bottom: 2px;
+      }
+      .spec-table td.spec-value {
+        width: 100%;
+      }
+      .contact-channel {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .channel-label {
+        width: 100%;
       }
     }
   </style>
@@ -1065,6 +1299,22 @@
       </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-inner">
+      <ul class="mobile-drawer-links">
+        <li><a href="#sequence" class="mobile-nav-link"><span class="mono-accent">01 //</span> SEQUENCE</a></li>
+        <li><a href="#ventures" class="mobile-nav-link"><span class="mono-accent">02 //</span> VENTURES</a></li>
+        <li><a href="#specifications" class="mobile-nav-link"><span class="mono-accent">03 //</span> SPECIFICATIONS</a></li>
+        <li><a href="#dossiers" class="mobile-nav-link"><span class="mono-accent">04 //</span> CASE FILES</a></li>
+        <li><a href="#contact" class="mobile-nav-link"><span class="mono-accent">05 //</span> CONTACT</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#contact" class="mobile-nav-cta">Initiate Contact</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        EDITORIAL HERO & STRUCTURED DOSSIER
@@ -1822,6 +2072,30 @@
 
         inquiryForm.reset();
       });
+
+
+      /* ------------------------------------------------------------------------
+         5. MOBILE NAVIGATION DRAWER TOGGLE
+         ------------------------------------------------------------------------ */
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta');
+
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileDrawer.classList.toggle('open');
+          const isOpen = mobileDrawer.classList.contains('open');
+          mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
     })();
   </script>
