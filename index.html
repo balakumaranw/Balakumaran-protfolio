@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balakumaran — Electrical Engineer, Web Developer, Artist & Founder</title>
+  <meta name="description" content="Technical dossier & portfolio of Balakumaran. Electrical Engineer, Website Developer, Visual Artist, and Founder of Flowgrid (flowgridco.in) and AquaGuide (aquaguide.in).">
+
+  <!-- Crisp Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: INDUSTRIAL & EDITORIAL PRECISION
+       One primary accent (Signal Orange #ff4d00), neutral titanium surfaces,
+       razor-thin borders, and zero AI-slop tropes.
+       ========================================================================== */
+    :root {
+      --bg-base: #0a0b0d;
+      --bg-surface: #111317;
+      --bg-surface-elevated: #181b20;
+      --bg-subtle: #1f2329;
+      --border-hairline: #22262d;
+      --border-strong: #333842;
+      
+      /* Single Primary Accent: Precision Signal Orange */
+      --accent: #ff4d00;
+      --accent-muted: rgba(255, 77, 0, 0.12);
+      --accent-border: rgba(255, 77, 0, 0.35);
+
+      /* High-contrast functional neutrals */
+      --text-primary: #f2f4f8;
+      --text-secondary: #9aa2b1;
+      --text-muted: #5e6673;
+      --text-code: #d0d7de;
+
+      /* Typography */
+      --font-display: 'Syne', -apple-system, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container-max: 1280px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg-base);
+      line-height: 1.55;
+      overflow-x: hidden;
+      color: var(--text-primary);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Monospace Technical Label Utility */
+    .mono-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .mono-accent {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       TOP STATUS BAR & NAVIGATION
+       ========================================================================== */
+    .top-bar {
+      border-bottom: 1px solid var(--border-hairline);
+      background: rgba(10, 11, 13, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      width: 100%;
+    }
+
+    .top-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .brand-mark-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .status-dot-active {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .nav-items {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-items a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-items a:hover {
+      color: #fff;
+    }
+
+    .nav-cta-btn {
+      padding: 8px 16px;
+      background: #fff;
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-cta-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 24px;
+    }
+
+    .mobile-menu-btn span {
+      height: 2px;
+      width: 100%;
+      background: #fff;
+    }
+
+    /* ==========================================================================
+       EDITORIAL HERO & DOSSIER (ASYMMETRICAL HEADER)
+       ========================================================================== */
+    .hero-editorial {
+      padding: 70px 0 60px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .hero-split-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .hero-lead-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.2vw, 5.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+      color: #fff;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .hero-statement {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .hero-statement strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .hero-direct-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-solid-accent {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-solid-accent:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: #fff;
+      background: var(--bg-surface);
+    }
+
+    /* Structured Technical Dossier Table */
+    .dossier-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .dossier-header {
+      padding: 14px 20px;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dossier-rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dossier-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.85rem;
+    }
+
+    .dossier-row:last-child {
+      border-bottom: none;
+    }
+
+    .dossier-key {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dossier-val {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .dossier-val a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ==========================================================================
+       TECHNICAL FILM VIEWPORT: 300-FRAME CANVAS SCROLL
+       Cinematic, calibrated, zero tacky cards. Clean viewport framing.
+       ========================================================================== */
+    .canvas-scroll-section {
+      position: relative;
+      height: 400vh; /* Controlled runway for precise frame scrubbing */
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .canvas-sticky-enclosure {
+      position: sticky;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 64px);
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Technical Calibration Header */
+    .viewport-header {
+      background: #0d0f12;
+      border-bottom: 1px solid var(--border-hairline);
+      height: 38px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      z-index: 10;
+    }
+
+    .viewport-meta-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .accent-indicator {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Canvas Frame Stage */
+    .viewport-stage {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #050607;
+      overflow: hidden;
+    }
+
+    #frameCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Framing Corner Crosshairs */
+    .frame-crosshair {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .frame-crosshair.tl { top: 20px; left: 24px; border-top: 1px solid rgba(255,255,255,0.3); border-left: 1px solid rgba(255,255,255,0.3); }
+    .frame-crosshair.tr { top: 20px; right: 24px; border-top: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3); }
+    .frame-crosshair.bl { bottom: 20px; left: 24px; border-bottom: 1px solid rgba(255,255,255,0.3); border-left: 1px solid rgba(255,255,255,0.3); }
+    .frame-crosshair.br { bottom: 20px; right: 24px; border-bottom: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3); }
+
+    /* Precision HUD Bar Overlay */
+    .viewport-hud {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      z-index: 6;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    /* Tactile Scroll Scrubber Track */
+    .viewport-scrubber {
+      background: rgba(13, 15, 18, 0.88);
+      border: 1px solid var(--border-hairline);
+      padding: 12px 18px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 220px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .scrub-track {
+      height: 4px;
+      background: var(--bg-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .scrub-progress {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.05s linear;
+    }
+
+    /* ==========================================================================
+       STARTUP VENTURES: INDUSTRIAL PRODUCT DATA SHEETS
+       Real architecture breakdown, metrics, and live platforms.
+       ========================================================================== */
+    .section-editorial {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-eyebrow-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .ventures-split-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .venture-datasheet {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .datasheet-header {
+      padding: 24px 32px;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .datasheet-id {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .datasheet-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .datasheet-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: opacity 0.2s;
+    }
+
+    .datasheet-link-btn:hover {
+      opacity: 0.9;
+    }
+
+    .datasheet-body {
+      padding: 36px 32px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+    }
+
+    .datasheet-desc-block h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .datasheet-desc-block p {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* Structured Spec Table inside Datasheet */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .spec-table tr {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .spec-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .spec-table td {
+      padding: 12px 0;
+      vertical-align: top;
+    }
+
+    .spec-table td.spec-key {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      width: 130px;
+    }
+
+    .spec-table td.spec-value {
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       TECHNICAL SPECIFICATIONS & SKILLS MATRIX
+       Horizontal index layout, no repetitive box cards.
+       ========================================================================== */
+    .skills-index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .skill-discipline-column {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discipline-header {
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-hairline);
+      margin-bottom: 24px;
+    }
+
+    .discipline-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .discipline-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .spec-item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .spec-item-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .spec-item-detail {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .spec-item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .spec-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border-radius: 2px;
+    }
+
+    /* ==========================================================================
+       EDITORIAL WORK / CASE DOSSIERS
+       Asymmetrical pacing with real technical scope.
+       ========================================================================== */
+    .case-studies-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .case-row {
+      display: grid;
+      grid-template-columns: 280px 1fr 180px;
+      gap: 36px;
+      padding: 32px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      align-items: center;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .case-row:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-surface-elevated);
+    }
+
+    .case-id-col .case-number {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .case-id-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .case-summary-col p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .case-meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .case-chip {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .case-action-col {
+      text-align: right;
+    }
+
+    .case-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding: 8px 14px;
+      border: 1px solid var(--accent-border);
+      border-radius: 3px;
+      background: var(--accent-muted);
+      transition: all 0.2s;
+    }
+
+    .case-action-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       TECHNICAL ENGAGEMENT & CONTACT
+       Direct, functional inquiry form and contact channels.
+       ========================================================================== */
+    .contact-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 56px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      padding: 48px;
+    }
+
+    .contact-intro-block h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-intro-block p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .contact-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 24px;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      font-size: 0.88rem;
+    }
+
+    .channel-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      width: 100px;
+    }
+
+    .channel-value a {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .channel-value a:hover {
+      color: var(--accent);
+    }
+
+    /* Inquiry Form */
+    .inquiry-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      border-radius: 4px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea.form-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-inquiry-btn {
+      padding: 14px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 4px;
+      margin-top: 6px;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+
+    .submit-inquiry-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Toast Notification */
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--accent);
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #fff;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast-box.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ==========================================================================
+       TECHNICAL FOOTER
+       ========================================================================== */
+    .footer-technical {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-hairline);
+      background: var(--bg-base);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .footer-nav a:hover {
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS
+       ========================================================================== */
+    @media (max-width: 1080px) {
+      .hero-split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .datasheet-body {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .skills-index-grid {
+        grid-template-columns: 1fr;
+      }
+      .case-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .case-action-col {
+        text-align: left;
+      }
+      .contact-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-items, .nav-cta-btn {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+      .viewport-hud {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .viewport-scrubber {
+        width: 100%;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP STATUS BAR & NAVIGATION
+       ========================================================================== -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="brand-mark-group">
+        <a href="#overview" class="brand-name">BALAKUMARAN</a>
+        <div class="status-indicator">
+          <span class="status-dot-active"></span>
+          <span>AVAILABLE FOR ADVISORY &amp; ARCHITECTURE</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-items">
+          <li><a href="#sequence">01 // SEQUENCE</a></li>
+          <li><a href="#ventures">02 // VENTURES</a></li>
+          <li><a href="#specifications">03 // SPECIFICATIONS</a></li>
+          <li><a href="#dossiers">04 // CASE FILES</a></li>
+          <li><a href="#contact">05 // CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contact" class="nav-cta-btn">Initiate Contact</a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       EDITORIAL HERO & STRUCTURED DOSSIER
+       ========================================================================== -->
+  <section class="hero-editorial" id="overview">
+    <div class="container">
+      <div class="hero-split-grid">
+        
+        <div>
+          <span class="mono-accent" style="margin-bottom: 16px; display: inline-block;">TECHNICAL DOSSIER &amp; PORTFOLIO</span>
+          <h1 class="hero-lead-title">
+            BALAKUMARAN
+          </h1>
+          <p class="hero-statement">
+            <strong>Electrical Engineer, Website Developer, and Visual Artist.</strong> Founder of <strong>Flowgrid</strong> (<a href="https://flowgridco.in" target="_blank" style="color:var(--accent);">flowgridco.in</a>) and <strong>AquaGuide</strong> (<a href="https://aquaguide.in" target="_blank" style="color:var(--accent);">aquaguide.in</a>). Building physical hardware telemetry and high-performance digital architectures designed to operate reliably under real-world constraints.
+          </p>
+
+          <div class="hero-direct-actions">
+            <a href="#ventures" class="btn-solid-accent">Review Founded Ventures</a>
+            <a href="#sequence" class="btn-outline">Inspect 300-Frame Sequence</a>
+          </div>
+        </div>
+
+        <!-- Structured Technical Dossier -->
+        <aside class="dossier-panel">
+          <div class="dossier-header">
+            <span class="mono-tag">SPECIFICATION OVERVIEW</span>
+            <span class="mono-accent">REF: BK-2026-ENG</span>
+          </div>
+          <div class="dossier-rows">
+            <div class="dossier-row">
+              <span class="dossier-key">CORE DISCIPLINE</span>
+              <span class="dossier-val">Electrical Engineering (Power &amp; Embedded)</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-key">SOFTWARE SCOPE</span>
+              <span class="dossier-val">Full-Stack Web, Canvas Scrubbers, Telemetry UIs</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-key">CREATIVE SCOPE</span>
+              <span class="dossier-val">Visual Direction, Motion Geometry, Spatial Art</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-key">VENTURE 01</span>
+              <span class="dossier-val">Flowgrid — Smart Grid Telemetry (<a href="https://flowgridco.in" target="_blank">flowgridco.in</a>)</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-key">VENTURE 02</span>
+              <span class="dossier-val">AquaGuide — Water Management (<a href="https://aquaguide.in" target="_blank">aquaguide.in</a>)</span>
+            </div>
+            <div class="dossier-row">
+              <span class="dossier-key">LOCATION</span>
+              <span class="dossier-val">India • UTC +05:30 (Global Availability)</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL FILM VIEWPORT: 300-FRAME SCROLL SCRUBBER
+       Calibrated, zero-slop layout with live telemetry overlays.
+       ========================================================================== */
+  -->
+  <section class="canvas-scroll-section" id="sequence">
+    <div class="canvas-sticky-enclosure">
+      
+      <!-- Viewport Header Bar -->
+      <div class="viewport-header">
+        <div class="viewport-meta-group">
+          <span>SEQUENCE ENGINE: <strong>300 FRAMES (1280x720 RAW)</strong></span>
+          <span class="accent-indicator" id="vpFrameIndex">FRAME: [ 001 / 300 ]</span>
+        </div>
+        <div class="viewport-meta-group">
+          <span id="vpTimecode">TC: 00:00:00</span>
+          <span id="vpLoadStatus">STATUS: BUFFERING</span>
+        </div>
+      </div>
+
+      <!-- Viewport Stage -->
+      <div class="viewport-stage">
+        <!-- Precision Corner Guides -->
+        <div class="frame-crosshair tl"></div>
+        <div class="frame-crosshair tr"></div>
+        <div class="frame-crosshair bl"></div>
+        <div class="frame-crosshair br"></div>
+
+        <canvas id="frameCanvas"></canvas>
+
+        <!-- Technical HUD Overlay Driven by Scroll -->
+        <div class="viewport-hud">
+          <div class="viewport-scrubber">
+            <div style="display: flex; justify-content: space-between;">
+              <span>SCRUB TRACK</span>
+              <span id="scrubPercent" class="accent-indicator">0%</span>
+            </div>
+            <div class="scrub-track">
+              <div class="scrub-progress" id="scrubProgress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOUNDED VENTURES: INDUSTRIAL PRODUCT DATA SHEETS
+       ========================================================================== -->
+  <section class="section-editorial" id="ventures">
+    <div class="container">
+      
+      <div class="section-eyebrow-row">
+        <div>
+          <span class="mono-accent">ACTIVE VENTURES // 02 ENTERPRISES</span>
+          <h2 class="section-heading">Operational Platforms</h2>
+        </div>
+        <span class="mono-tag">FOUNDED BY BALAKUMARAN</span>
+      </div>
+
+      <div class="ventures-split-stack">
+
+        <!-- VENTURE 01: FLOWGRID -->
+        <article class="venture-datasheet">
+          <div class="datasheet-header">
+            <div class="datasheet-id">
+              <span class="mono-tag" style="background:#000; padding:4px 8px; border:1px solid var(--border-hairline);">SYS_01</span>
+              <h3 class="datasheet-title">Flowgrid</h3>
+              <span class="mono-tag" style="color:var(--text-secondary);">flowgridco.in</span>
+            </div>
+            <a href="https://flowgridco.in" target="_blank" rel="noopener noreferrer" class="datasheet-link-btn">
+              <span>Open flowgridco.in</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+
+          <div class="datasheet-body">
+            <div class="datasheet-desc-block">
+              <h4>System Abstract &amp; Objective</h4>
+              <p>
+                Flowgrid is a specialized infrastructure platform engineered for decentralized electrical distribution networks. It pairs edge microcontroller telemetry nodes with low-latency ingestion servers to give energy operators real-time visibility into transformer loads, line frequency fluctuations, and thermal thresholds.
+              </p>
+              <h4>Operational Role</h4>
+              <p style="font-size: 0.92rem;">
+                <strong>Founder &amp; Chief Architect:</strong> Responsible for complete end-to-end specification—from edge PCB schematics and FreeRTOS firmware to time-series streaming APIs and reactive monitoring consoles.
+              </p>
+            </div>
+
+            <table class="spec-table">
+              <tbody>
+                <tr>
+                  <td class="spec-key">PRIMARY SECTOR</td>
+                  <td class="spec-value">Smart Grid Infrastructure, Energy Telemetry</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">EDGE HARDWARE</td>
+                  <td class="spec-value">ESP32 / ARM Cortex-M4, Current Transformers (CT), Voltage Sensors, RS485 Modbus</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">TELEMETRY STACK</td>
+                  <td class="spec-value">MQTT over TLS, TimescaleDB, Redis Ingestion Pipeline</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">CONSOLE UI</td>
+                  <td class="spec-value">Next.js, TypeScript, Canvas Real-Time Phase Waveform Visualizers</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">DEPLOYMENT STATUS</td>
+                  <td class="spec-value"><span style="color:var(--accent); font-weight:700;">● Active Pilot &amp; Continuous Development</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- VENTURE 02: AQUAGUIDE -->
+        <article class="venture-datasheet">
+          <div class="datasheet-header">
+            <div class="datasheet-id">
+              <span class="mono-tag" style="background:#000; padding:4px 8px; border:1px solid var(--border-hairline);">SYS_02</span>
+              <h3 class="datasheet-title">AquaGuide</h3>
+              <span class="mono-tag" style="color:var(--text-secondary);">aquaguide.in</span>
+            </div>
+            <a href="https://aquaguide.in" target="_blank" rel="noopener noreferrer" class="datasheet-link-btn">
+              <span>Open aquaguide.in</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+
+          <div class="datasheet-body">
+            <div class="datasheet-desc-block">
+              <h4>System Abstract &amp; Objective</h4>
+              <p>
+                AquaGuide addresses large-scale water distribution inefficiencies through acoustic and ultrasonic sensor arrays. By analyzing micro-vibrations in piping networks, the platform isolates leak locations before surface symptoms appear, while providing facilities and utilities with automated consumption auditing.
+              </p>
+              <h4>Operational Role</h4>
+              <p style="font-size: 0.92rem;">
+                <strong>Founder &amp; Lead Systems Engineer:</strong> Spearheaded the sensor calibration algorithms, battery-efficient telemetry protocols, and the centralized command dashboard for municipal and institutional facilities.
+              </p>
+            </div>
+
+            <table class="spec-table">
+              <tbody>
+                <tr>
+                  <td class="spec-key">PRIMARY SECTOR</td>
+                  <td class="spec-value">Water Resource Intelligence &amp; Infrastructure Monitoring</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">SENSOR INTERFACES</td>
+                  <td class="spec-value">Ultrasonic Time-of-Flight Flow, Hydrostatic Pressure Transducers, LoRaWAN / Cellular IoT</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">ANALYTICS ENGINE</td>
+                  <td class="spec-value">Acoustic Anomaly Detection, Consumption Baseline Forecasting</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">FRONTEND CLIENT</td>
+                  <td class="spec-value">High-Density Asset Map, Automated Incident Dispatcher, React/Node.js</td>
+                </tr>
+                <tr>
+                  <td class="spec-key">DEPLOYMENT STATUS</td>
+                  <td class="spec-value"><span style="color:var(--accent); font-weight:700;">● Field Testbeds &amp; Scaling Commercial Rollout</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL SPECIFICATIONS & CAPABILITIES
+       Clean 3-column index, no repetitive cliché cards.
+       ========================================================================== -->
+  <section class="section-editorial" id="specifications">
+    <div class="container">
+      
+      <div class="section-eyebrow-row">
+        <div>
+          <span class="mono-accent">CAPABILITIES MATRIX // VERIFIED SKILLS</span>
+          <h2 class="section-heading">Engineering &amp; Code Specifications</h2>
+        </div>
+        <span class="mono-tag">FIELD-TESTED PRACTICES</span>
+      </div>
+
+      <div class="skills-index-grid">
+        
+        <!-- Column 1: Electrical Hardware -->
+        <div class="skill-discipline-column">
+          <div class="discipline-header">
+            <div class="discipline-num">01 // HARDWARE &amp; CIRCUITS</div>
+            <h3 class="discipline-title">Electrical Systems</h3>
+          </div>
+          <ul class="spec-item-list">
+            <li class="spec-item">
+              <span class="spec-item-name">Circuit Design &amp; PCB Layout</span>
+              <p class="spec-item-detail">Schematic capture, power trace routing, thermal management, noise decoupling for analog/digital mixed signals.</p>
+              <div class="spec-item-tags"><span class="spec-tag">Altium</span><span class="spec-tag">KiCad</span><span class="spec-tag">SPICE Simulation</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Embedded Microcontrollers &amp; Firmware</span>
+              <p class="spec-item-detail">Bare-metal and RTOS firmware in C/C++, interrupt handlers, low-power sleep modes, hardware timers.</p>
+              <div class="spec-item-tags"><span class="spec-tag">ESP32</span><span class="spec-tag">ARM Cortex</span><span class="spec-tag">FreeRTOS</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Industrial Bus Protocols</span>
+              <p class="spec-item-detail">Deterministic edge communication with field sensors and industrial telemetry hardware.</p>
+              <div class="spec-item-tags"><span class="spec-tag">RS485 Modbus</span><span class="spec-tag">SPI / I2C</span><span class="spec-tag">UART</span><span class="spec-tag">CAN Bus</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Web Engineering -->
+        <div class="skill-discipline-column">
+          <div class="discipline-header">
+            <div class="discipline-num">02 // WEB &amp; ARCHITECTURE</div>
+            <h3 class="discipline-title">Software Systems</h3>
+          </div>
+          <ul class="spec-item-list">
+            <li class="spec-item">
+              <span class="spec-item-name">Modern Frontend Architecture</span>
+              <p class="spec-item-detail">Type-safe, componentized web systems built for zero runtime churn, strict state management, and accessible semantics.</p>
+              <div class="spec-item-tags"><span class="spec-tag">TypeScript</span><span class="spec-tag">Next.js</span><span class="spec-tag">React</span><span class="spec-tag">CSS Architecture</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Canvas &amp; High-Frequency Graphics</span>
+              <p class="spec-item-detail">Custom 60 FPS HTML5 Canvas scrubbers, dynamic aspect ratio calculation, memory-managed image buffers, audio visualizers.</p>
+              <div class="spec-item-tags"><span class="spec-tag">2D Canvas API</span><span class="spec-tag">WebGL</span><span class="spec-tag">Scrub Engines</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Real-Time Ingestion &amp; APIs</span>
+              <p class="spec-item-detail">Backend communication layers handling streaming telemetry feeds from deployed hardware sensors.</p>
+              <div class="spec-item-tags"><span class="spec-tag">Node.js</span><span class="spec-tag">WebSockets</span><span class="spec-tag">REST &amp; GraphQL</span><span class="spec-tag">MQTT</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Visual Art & Direction -->
+        <div class="skill-discipline-column">
+          <div class="discipline-header">
+            <div class="discipline-num">03 // ART &amp; MOTION</div>
+            <h3 class="discipline-title">Visual Direction</h3>
+          </div>
+          <ul class="spec-item-list">
+            <li class="spec-item">
+              <span class="spec-item-name">Cinematic Motion Choreography</span>
+              <p class="spec-item-detail">Sequence pacing, keyframe calibration, frame-by-frame asset curation (exemplified by the 300-frame video experience).</p>
+              <div class="spec-item-tags"><span class="spec-tag">Frame Pacing</span><span class="spec-tag">Motion Direction</span><span class="spec-tag">Sequencing</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Editorial &amp; Industrial Design Systems</span>
+              <p class="spec-item-detail">Typographic hierarchy, high-contrast layouts, precision UI spacing, elimination of decorative bloat.</p>
+              <div class="spec-item-tags"><span class="spec-tag">Figma</span><span class="spec-tag">Design Systems</span><span class="spec-tag">Information Design</span></div>
+            </li>
+            <li class="spec-item">
+              <span class="spec-item-name">Generative Art &amp; Visual Computing</span>
+              <p class="spec-item-detail">Algorithmic drawings, mathematical curve modeling, digital media exploring physical and mechanical phenomena.</p>
+              <div class="spec-item-tags"><span class="spec-tag">Mathematical Curves</span><span class="spec-tag">Digital Media</span></div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDITORIAL CASE FILES
+       Structured dossier rows replacing 3-card repetition.
+       ========================================================================== -->
+  <section class="section-editorial" id="dossiers">
+    <div class="container">
+      
+      <div class="section-eyebrow-row">
+        <div>
+          <span class="mono-accent">SELECTED WORK // CASE FILES</span>
+          <h2 class="section-heading">Architectural Case Files</h2>
+        </div>
+        <span class="mono-tag">INDEX OF IMPLEMENTATIONS</span>
+      </div>
+
+      <div class="case-studies-list">
+
+        <!-- Case 01 -->
+        <div class="case-row">
+          <div class="case-id-col">
+            <div class="case-number">CASE FILE // 01</div>
+            <h3>Flowgrid Telemetry Platform</h3>
+          </div>
+          <div class="case-summary-col">
+            <p>
+              Comprehensive electrical telemetry platform integrating physical CT and potential transformers with an event-driven web dashboard, enabling municipal energy managers to monitor substation phase balance.
+            </p>
+            <div class="case-meta-chips">
+              <span class="case-chip">Smart Grid</span>
+              <span class="case-chip">ESP32 Firmware</span>
+              <span class="case-chip">Next.js</span>
+              <span class="case-chip">Sub-second Latency</span>
+            </div>
+          </div>
+          <div class="case-action-col">
+            <a href="https://flowgridco.in" target="_blank" rel="noopener noreferrer" class="case-action-btn">
+              <span>Inspect Platform</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 02 -->
+        <div class="case-row">
+          <div class="case-id-col">
+            <div class="case-number">CASE FILE // 02</div>
+            <h3>AquaGuide Water Monitor</h3>
+          </div>
+          <div class="case-summary-col">
+            <p>
+              Acoustic leak-detection hardware paired with a distributed geospatial telemetry console. Analyzes flow differential equations to isolate micro-fractures in high-pressure supply mains.
+            </p>
+            <div class="case-meta-chips">
+              <span class="case-chip">Water Telemetry</span>
+              <span class="case-chip">LoRaWAN</span>
+              <span class="case-chip">Anomaly ML</span>
+              <span class="case-chip">Asset Mapping</span>
+            </div>
+          </div>
+          <div class="case-action-col">
+            <a href="https://aquaguide.in" target="_blank" rel="noopener noreferrer" class="case-action-btn">
+              <span>Inspect Platform</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 03 -->
+        <div class="case-row">
+          <div class="case-id-col">
+            <div class="case-number">CASE FILE // 03</div>
+            <h3>300-Frame Canvas Engine</h3>
+          </div>
+          <div class="case-summary-col">
+            <p>
+              Calibrated client-side frame sequence player. Features zero-lag memory caching, linear interpolation dampening, nearest-neighbor fallback rendering, and adaptive asset prefix discovery.
+            </p>
+            <div class="case-meta-chips">
+              <span class="case-chip">HTML5 Canvas</span>
+              <span class="case-chip">Image Buffer</span>
+              <span class="case-chip">Kinetic Lerp</span>
+              <span class="case-chip">60 FPS</span>
+            </div>
+          </div>
+          <div class="case-action-col">
+            <a href="#sequence" class="case-action-btn">
+              <span>Scrub Engine</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       DIRECT TECHNICAL ENGAGEMENT & CONTACT
+       ========================================================================== -->
+  <section class="section-editorial" id="contact">
+    <div class="container">
+      
+      <div class="contact-split-grid">
+        
+        <div class="contact-intro-block">
+          <span class="mono-accent">ENGAGEMENT &amp; ADVISORY</span>
+          <h3>Initiate Direct Contact</h3>
+          <p>
+            Available for technical consultations, electrical engineering and IoT architecture, technical advisory for early-stage ventures, and custom web platform development.
+          </p>
+
+          <div class="contact-lines">
+            <div class="contact-channel">
+              <span class="channel-label">DIRECT EMAIL</span>
+              <span class="channel-value"><a href="mailto:contact@flowgridco.in" id="copyEmailLink" title="Click to copy email">contact@flowgridco.in</a></span>
+            </div>
+            <div class="contact-channel">
+              <span class="channel-label">VENTURE 01</span>
+              <span class="channel-value"><a href="https://flowgridco.in" target="_blank">flowgridco.in</a></span>
+            </div>
+            <div class="contact-channel">
+              <span class="channel-label">VENTURE 02</span>
+              <span class="channel-value"><a href="https://aquaguide.in" target="_blank">aquaguide.in</a></span>
+            </div>
+            <div class="contact-channel">
+              <span class="channel-label">TIMEZONE</span>
+              <span class="channel-value" style="color:#fff;">UTC +05:30 (IST)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Functional Structured Inquiry Form -->
+        <form class="inquiry-form" id="inquiryForm">
+          <div class="form-row-2">
+            <div class="form-field">
+              <label for="clientName">Full Name</label>
+              <input type="text" id="clientName" class="form-input" placeholder="e.g. Marcus Thorne" required>
+            </div>
+            <div class="form-field">
+              <label for="clientEmail">Work Email</label>
+              <input type="email" id="clientEmail" class="form-input" placeholder="m.thorne@company.com" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="projectScope">Engagement Domain</label>
+            <select id="projectScope" class="form-input">
+              <option value="Hardware Architecture">Electrical Engineering / IoT Hardware Advisory</option>
+              <option value="Flowgrid Venture">Flowgrid Venture Inquiries (Smart Grid)</option>
+              <option value="AquaGuide Venture">AquaGuide Venture Inquiries (Water Telemetry)</option>
+              <option value="Full-Stack Web">Full-Stack Web / Canvas Scrubbing Platforms</option>
+              <option value="General Technical Consultation">General Technical Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="projectBrief">Project Specification / Objective</label>
+            <textarea id="projectBrief" class="form-input" placeholder="Summarize the core requirements, constraints, and timeline..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-inquiry-btn">Transmit Inquiry</button>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL FOOTER
+       ========================================================================== -->
+  <footer class="footer-technical">
+    <div class="container">
+      <div class="footer-flex">
+        <div class="footer-left">
+          <span style="font-family: var(--font-display); font-weight: 800; color:#fff;">BALAKUMARAN</span>
+          <span>© 2026 Balakumaran • Electrical Engineer, Web Developer, Artist</span>
+        </div>
+        <ul class="footer-nav">
+          <li><a href="#sequence">Sequence</a></li>
+          <li><a href="#ventures">Ventures</a></li>
+          <li><a href="#specifications">Specifications</a></li>
+          <li><a href="#dossiers">Case Files</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Box for Copy & Interactions -->
+  <div class="toast-box" id="toastBox">Email address copied to clipboard.</div>
+
+  <!-- ==========================================================================
+       CALIBRATED JAVASCRIPT: 300-FRAME SCRUB ENGINE & RUNTIME
+       ========================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ------------------------------------------------------------------------
+         1. 300-FRAME CANVAS ENGINE SETUP
+         ------------------------------------------------------------------------ */
+      const TOTAL_FRAMES = 300;
+      const canvas = document.getElementById('frameCanvas');
+      const ctx = canvas.getContext('2d');
+      const sequenceContainer = document.getElementById('sequence');
+      
+      const vpFrameIndex = document.getElementById('vpFrameIndex');
+      const vpTimecode = document.getElementById('vpTimecode');
+      const vpLoadStatus = document.getElementById('vpLoadStatus');
+      const scrubPercent = document.getElementById('scrubPercent');
+      const scrubProgress = document.getElementById('scrubProgress');
+
+      const images = new Array(TOTAL_FRAMES + 1);
+      const isLoaded = new Uint8Array(TOTAL_FRAMES + 1);
+      let loadedCount = 0;
+      let cw = 0, ch = 0;
+      let assetPrefix = 'assets/';
+
+      function getFramePath(idx) {
+        const pad = String(idx).padStart(3, '0');
+        return `${assetPrefix}ezgif-frame-${pad}.jpg`;
+      }
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        cw = canvas.parentElement.clientWidth;
+        ch = canvas.parentElement.clientHeight;
+        canvas.width = cw * dpr;
+        canvas.height = ch * dpr;
+        canvas.style.width = cw + 'px';
+        canvas.style.height = ch + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        renderFrame(currentRenderedFrame);
+      }
+
+      function renderFrame(frameIdx) {
+        const img = getNearestLoadedImage(frameIdx);
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        ctx.clearRect(0, 0, cw, ch);
+
+        const imgW = img.naturalWidth;
+        const imgH = img.naturalHeight;
+        const ratio = Math.max(cw / imgW, ch / imgH);
+
+        const nw = imgW * ratio;
+        const nh = imgH * ratio;
+        const dx = (cw - nw) / 2;
+        const dy = (ch - nh) / 2;
+
+        ctx.drawImage(img, 0, 0, imgW, imgH, dx, dy, nw, nh);
+      }
+
+      function getNearestLoadedImage(targetIdx) {
+        if (isLoaded[targetIdx] && images[targetIdx]) return images[targetIdx];
+        for (let off = 1; off < TOTAL_FRAMES; off++) {
+          const prev = targetIdx - off;
+          if (prev >= 1 && isLoaded[prev] && images[prev]) return images[prev];
+          const next = targetIdx + off;
+          if (next <= TOTAL_FRAMES && isLoaded[next] && images[next]) return images[next];
+        }
+        return images[1];
+      }
+
+      function loadSingleFrame(idx) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = getFramePath(idx);
+          img.onload = () => {
+            images[idx] = img;
+            isLoaded[idx] = 1;
+            loadedCount++;
+            onFrameReady(idx);
+            resolve(img);
+          };
+          img.onerror = () => resolve(null);
+        });
+      }
+
+      function onFrameReady(idx) {
+        if (idx === 1 && currentRenderedFrame === 1) {
+          renderFrame(1);
+        }
+        const pct = Math.floor((loadedCount / TOTAL_FRAMES) * 100);
+        if (loadedCount < TOTAL_FRAMES) {
+          vpLoadStatus.textContent = `BUFFERING: ${pct}%`;
+        } else {
+          vpLoadStatus.textContent = `BUFFER READY (300/300)`;
+        }
+      }
+
+      async function initializeSequenceBuffer() {
+        // Probe frame 1 to adapt to directory root vs subfolder
+        let probe = await loadSingleFrame(1);
+        if (!probe) {
+          assetPrefix = assetPrefix === 'assets/' ? 'balakumaran_cosmic_portfolio/assets/' : 'assets/';
+          probe = await loadSingleFrame(1);
+        }
+        if (probe) renderFrame(1);
+
+        // Preload keyframes for instantaneous initial scrub feedback
+        const keyframes = [];
+        for (let i = 5; i <= TOTAL_FRAMES; i += 5) keyframes.push(i);
+        await Promise.all(keyframes.map(k => loadSingleFrame(k)));
+
+        // Stream remaining frames in batches
+        const remaining = [];
+        for (let i = 2; i <= TOTAL_FRAMES; i++) {
+          if (!isLoaded[i]) remaining.push(i);
+        }
+
+        const BATCH = 12;
+        for (let i = 0; i < remaining.length; i += BATCH) {
+          const batch = remaining.slice(i, i + BATCH);
+          await Promise.all(batch.map(k => loadSingleFrame(k)));
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+         2. SCROLL TELEMETRY & SMOOTH LERP LOOP
+         ------------------------------------------------------------------------ */
+      let targetProgress = 0;
+      let smoothedProgress = 0;
+      let currentRenderedFrame = 1;
+
+      function onScrollUpdate() {
+        const rect = sequenceContainer.getBoundingClientRect();
+        const runway = rect.height - window.innerHeight;
+        if (runway <= 0) return;
+        const scrolled = -rect.top;
+        targetProgress = Math.max(0, Math.min(1, scrolled / runway));
+      }
+
+      function animationTick() {
+        // High-precision smooth lerp
+        smoothedProgress += (targetProgress - smoothedProgress) * 0.16;
+
+        const targetFrame = Math.min(
+          TOTAL_FRAMES,
+          Math.max(1, Math.round(1 + smoothedProgress * (TOTAL_FRAMES - 1)))
+        );
+
+        if (targetFrame !== currentRenderedFrame) {
+          currentRenderedFrame = targetFrame;
+          renderFrame(targetFrame);
+
+          // Update header readouts
+          const padIdx = String(targetFrame).padStart(3, '0');
+          vpFrameIndex.textContent = `FRAME: [ ${padIdx} / 300 ]`;
+
+          // Realistic Timecode: 300 frames @ 30fps = 10s
+          const totalSeconds = targetFrame / 30;
+          const mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+          const secs = String(Math.floor(totalSeconds % 60)).padStart(2, '0');
+          const frames = String(Math.floor((totalSeconds % 1) * 30)).padStart(2, '0');
+          vpTimecode.textContent = `TC: 00:${mins}:${secs}:${frames}`;
+        }
+
+        const percent = Math.round(smoothedProgress * 100);
+        scrubPercent.textContent = `${percent}%`;
+        scrubProgress.style.width = `${percent}%`;
+
+        requestAnimationFrame(animationTick);
+      }
+
+      window.addEventListener('scroll', onScrollUpdate, { passive: true });
+      window.addEventListener('resize', resizeCanvas);
+
+      resizeCanvas();
+      initializeSequenceBuffer();
+      requestAnimationFrame(animationTick);
+
+
+      /* ------------------------------------------------------------------------
+         3. TOAST NOTIFICATION & EMAIL COPY
+         ------------------------------------------------------------------------ */
+      const toastBox = document.getElementById('toastBox');
+      const copyEmailLink = document.getElementById('copyEmailLink');
+
+      function triggerToast(message) {
+        toastBox.textContent = message;
+        toastBox.classList.add('active');
+        setTimeout(() => toastBox.classList.remove('active'), 3000);
+      }
+
+      copyEmailLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = 'contact@flowgridco.in';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(email).then(() => {
+            triggerToast('Email copied to clipboard (contact@flowgridco.in)');
+          }).catch(() => {
+            window.location.href = `mailto:${email}`;
+          });
+        } else {
+          window.location.href = `mailto:${email}`;
+        }
+      });
+
+
+      /* ------------------------------------------------------------------------
+         4. INQUIRY FORM SUBMISSION
+         ------------------------------------------------------------------------ */
+      const inquiryForm = document.getElementById('inquiryForm');
+      inquiryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('clientName').value.trim();
+        const email = document.getElementById('clientEmail').value.trim();
+        const scope = document.getElementById('projectScope').value;
+        const brief = document.getElementById('projectBrief').value.trim();
+
+        if (!name || !email || !brief) return;
+
+        const mailto = `mailto:contact@flowgridco.in?subject=${encodeURIComponent(`[Technical Inquiry: ${scope}] from ${name}`)}&body=${encodeURIComponent(`Client: ${name}\nEmail: ${email}\nDomain: ${scope}\n\nProject Brief:\n${brief}`)}`;
+        
+        triggerToast('Launching email client with structured specification...');
+        setTimeout(() => {
+          window.location.href = mailto;
+        }, 600);
+
+        inquiryForm.reset();
+      });
+
+    })();
+  </script>
+</body>
+</html>
